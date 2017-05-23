@@ -1,6 +1,7 @@
 ## Jpoint 2017 notes
 
-[Jpoint 2017](http://2017.jpoint.ru/) took place in Moscow on 6-7 April.
+[Jpoint 2017](http://2017.jpoint.ru/) took place in Moscow on 6-7 April. 
+All videos will be available on [JUG youtube channel](https://www.youtube.com/user/JUGRuVideo)
 
 ### Keynote. Performance. Shipilev. (Ru)
 [[slides]](https://shipilev.net/talks/jpoint-April2017-perf-keynote.pdf)
@@ -29,7 +30,7 @@ Viet introduced several approaches to minimize downtime:
   - load balancing
   - client side load balancing
   
-From tools to test and maintain misriservices I should mention:
+From tools to test and maintain microservices I should mention:
   - Vegeta - a tool for performance and stability testing
   - Ansible - configuration manager
 
@@ -80,8 +81,10 @@ Very interesting material for better understanding of what's really going on und
 ### Inside jvm with hashCode. Vladimir Dolzhenko (Ru)
 [[slides]](http://assets.contentful.com/oxjq45e8ilak/2JOrAVVgCQqAcmqcg2oo0q/02e7bddadb799cddd820911f2e7b9ba6/Vladimir_Dolzhenko_-_Through_the_keyhole_of_hashCode_into_VM.pdf)
 
-A long way inside jvm internals to buster the myth: "Hascode is typically implemented by converting the internal
-address of the object into an integer". Also you will get a basic theory of collision resolution inside java.
+A long way inside jvm internals to buster the myth: 
+> "Hashcode is typically implemented by converting the internal
+address of the object into an integer". 
+Also you will get a basic theory of collision resolution inside java.
 A lot of JMH inside. 
 
 I recommend.
