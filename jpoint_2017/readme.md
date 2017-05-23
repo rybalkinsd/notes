@@ -12,7 +12,7 @@ Each stage needs it's own methods to improve performance.
 
 I could recommend to any engineer.
 
-<img src="curve.png" alt="curve" style="width: 400px;"/>
+<img src="curve.png" width="600"/>
 
 ### Where is my service, dude? Viet Nguyen. (Ru) 
 [[slides]](https://www.slideshare.net/VietNguyen334/jpoint-2017-where-is-my-service-dude)
@@ -38,7 +38,7 @@ He described typical java application and problems that could occur in it on dev
 
 This speech could be interesting to junior developers. I do not want to recommend it.
 
-![](diagnostic.png)
+<img src="diagnostic.png" width="600"/>
 
 
 ### Brainstorming a Clean, Pragmatic Architecture. Victor Rentea (En)
