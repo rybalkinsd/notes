@@ -42,7 +42,8 @@ I recommend it to engineers interested in devops.
 Oleg speech was about interaction with admins and the conflict of interests between dev and ops. 
 He described typical java application and problems that could occur in it on dev, ops and devops sides.
 
-This speech could be interesting to junior developers. I wouldn;t recommend it ro an experienced engineer.
+This speech could be interesting to junior developers. 
+I wouldn't recommend it ro an experienced engineer.
 
 <img src="diagnostic.png" width="600"/>
 
@@ -73,15 +74,26 @@ Must see if you are connectied with Spring boot.
 A talk about new GC estimated for Java 10 currently. 
 Alexey described modern practicies and tradeoffs in GC architecture. 
 He briefly introduced Shenandoah "ultra-low" pauses idea: regions, concurrent mark, concurrent evacuation, ... .
+
 Very interesting material for better understanding of what's really going on under the hood.
 
 ### Inside jvm with hashCode. Vladimir Dolzhenko (Ru)
 [[slides]](http://assets.contentful.com/oxjq45e8ilak/2JOrAVVgCQqAcmqcg2oo0q/02e7bddadb799cddd820911f2e7b9ba6/Vladimir_Dolzhenko_-_Through_the_keyhole_of_hashCode_into_VM.pdf)
 
 A long way inside jvm internals to buster the myth: "Hascode is typically implemented by converting the internal
-address of the object into an integer". 
+address of the object into an integer". Also you will get a basic theory of collision resolution inside java.
 A lot of JMH inside. 
+
 I recommend.
 
+### Inspections in Intellij Idea. Tagir Valiev (Ru)
+[[slides]](http://assets.contentful.com/oxjq45e8ilak/3oOOE1CwreSuWQCKaoK6Eo/2302262e8797e678999d5b2862a2c8c2/valeev_inspections__1_.pdf)
 
+A talk about how inspections work in Intellij Idea and what inspections and substitutions could be illegal according to JLS.
+Tagir described why it is really hard to provide a good inspection for Spring framework code (*spoiler* - poor documentation).
+To tell the truth I expected more internals and detective story from a speaker.
 
+I do not recommend.
+
+<img src="kill_all_human.png" width="600"/>
+#### Thats all for now
