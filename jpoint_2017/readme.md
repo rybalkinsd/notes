@@ -12,7 +12,7 @@ Each stage needs it's own methods to improve performance.
 
 I could recommend to any engineer.
 
-![](curve.png)
+<img src="curve.png" alt="curve" style="width: 400px;"/>
 
 ### Where is my service, dude? Viet Nguyen. (Ru) 
 [[slides]](https://www.slideshare.net/VietNguyen334/jpoint-2017-where-is-my-service-dude)
