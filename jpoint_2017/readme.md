@@ -96,4 +96,5 @@ To tell the truth I expected more internals and detective story from a speaker.
 I do not recommend.
 
 <img src="kill_all_human.png" width="600"/>
-#### Thats all for now
+
+Thats all for now. This post is my own point of view.
