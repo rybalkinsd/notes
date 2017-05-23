@@ -8,11 +8,11 @@
 An overview of where and when should performance improvements be done in project. 
 Alexey introduced a Curve of performance engineering - relation between code complexity and application performance. 
 According to this curve, modifications in project:
-  1. Green - architecture and code complexity improvements leads to performance improvement.
+  1. Green - architecture and code quality improvements leads to performance improvement.
   1. Yellow - tradeoff between code quality and performance. Each hack should be commented.
   1. Read - dirty hacks. Unsafe, bit state manipulations, non-documented features.
 
-Each stage needs it's own methods to improve performance.
+Each stage needs its own methods to improve performance.
 
 I recommend it to any engineer.
 
