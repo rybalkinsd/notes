@@ -49,3 +49,32 @@ His ideas are simple and not breaking through but absolutely consistent in total
 Do not demand to get new KISS, DRY or silver bullet approaches. 
 But you can get ideas for complex architecture problems - what to do when KISS says `A` and some other useful approach says `B`.
 I can recommend this speech to any engineer.
+
+
+### Curse of Spring boot test. Tolkachev, Borisov (Ru)
+[[slides]](https://www.slideshare.net/kirilltolkachev7/spring-boot-test-horror)
+
+This speech was about new featurese of Spring boot and Spring boot test frameworks. 
+Guys described a lot of technical problems with integration and microservice test layers.
+How to cache test configuration to minimize testing time, where to use `@SpringBootTest`, `@DataJpaTest` and `@WebMvcTest`.
+
+Must see if you are connectied with Spring boot.
+
+### Shenandoah. Shipilev. (Ru)
+[[slides]](https://shipilev.net/talks/jpoint-April2017-shenandoah.pdf)
+
+A talk about new GC estemated for Java 10 currently. 
+Alexey discrubed modern practicies and tradeoffs in GC architecture. 
+He briefly introduced Shenandoah "ultra-low" pauses idea: regions, concurrent mark, concurrent evacuation, ... .
+Very interesting material for better understanding what's really going on under the hood.
+
+### Inside jvm with hashCode. Vladimir Dolzhenko (Ru)
+[[slides]](http://assets.contentful.com/oxjq45e8ilak/2JOrAVVgCQqAcmqcg2oo0q/02e7bddadb799cddd820911f2e7b9ba6/Vladimir_Dolzhenko_-_Through_the_keyhole_of_hashCode_into_VM.pdf)
+
+A long way inside jvm internals to buster the myth: "Hascode is typically implemented by converting the internal
+address of the object into an integer". 
+A lot of JMH inside. 
+I recommend.
+
+
+
