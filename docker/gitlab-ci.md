@@ -1,5 +1,6 @@
 # Continious delivery with docker and gitlab-ci.
-\#docker \#gitlab \#gitlab-ci-multi-runner \#CI \#CD
+*\#docker \#gitlab \#gitlab-ci-multi-runner \#CI \#CD*
+
 Недавно пришлось настраивать собственную систему CI на базе Gitlab. 
 Эта заметка о том, что было сделано и зачем.
 
