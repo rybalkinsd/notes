@@ -94,6 +94,85 @@ CMD ["java", "-jar", "my-app.jar"]
 Значит runner должен знать что такое jre, maven и docker.
 Давайте создадим такой.
  
+Сначала на тестовой машине необходимо установить docker. 
+Мой докер - `Docker version 1.12.6, build 78d1802`.
+Далее нужно поставить себе `gitlab-ci-multi-runner`, этот процесс подробно описан [тут](https://docs.gitlab.com/runner/install/linux-repository.html). 
+Важно, чтобы API gitlab был совместим с API runner'а.
+В этот момент стоит посмотреть [changelog](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/CHANGELOG.md).
+Мне подошла версия предшествующая **v 9.0.0**.
+В качестве executor'а в runner'е был выбран docker.
+
+Основная конфигурация раннера находится в `/etc/gitlab-runner/config.toml` или внутри конкретного пользователя.
+Что там можно прописывать подробно описано [тут](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/configuration/advanced-configuration.md)
+
+Распишу подробно только то, что попало в мой config.
+
+```toml
+[[runners]]
+  name = "bears and vodka"
+  url = ***
+  token = ***
+  executor = "docker"
+  [runners.docker]
+    image = "maven:3.5.0-jdk-8-onbuild"
+    volumes = [
+      "/cache", 
+      "/.m2:/root/.m2", 
+      "/var/run/docker.sock:/var/run/docker.sock", 
+      "/usr/bin/docker:/usr/bin/docker"
+    ]
+  [runners.cache]
+```
+
+- image - базовый образ runner'а на нем мы будем делать всё то, что описано в `.gitlab-ci.yml`. maven:3.5.0-jdk-8-onbuild предоставляет нам java и mvn.
+- url - ci url, можно взять в gitlab
+- volume
+  1. "/cache" хочется дать возможность кэшировать некоторые вещи для повторных запусков
+  1. "/.m2:/root/.m2" - хочется иметь кастомный `settings.xml` и не скачивать зависимости каждый раз.
+  1. Ну и наконец, нам нужно уметь собирать docker image, а для этого нужен docker.
+     Самый простой способ затащить его в контейнер - последние две декларации в volume.
+     
+Ну и посмотрим на job deploy-docker в `.gitlab-ci.yml`
+
+```yaml
+deploy-docker:
+  stage: deploy
+  script:
+    - mvn -DskipTests package
+    - docker stop my-app || true
+    - docker rm my-app || true
+    - docker build -t my-app .
+    - docker run -d -p 8080:7777 --name my-app my-app
+  only:
+    - master
+```
+
+Из этой декларации можно сделать следующие выводы:
+1. Мы не только собираем docker image, но и сразу деплоим его в свою тестовую среду.
+1. `build` и `run` выполняются в "одном и том же" инстансе докера.
+1. Перед запуском контейнера происходит остановка и удаление предыдущего, если такой был.
+1. Не делается push в приватное хранилище образов
+1. Ожидается, что всегда master:head будет задеплоен
+
+Последняя проблема с которой я столкнулся - dns. 
+Корпоративные приложения часто хотят использовать собственные dns.
+К счастью, настроить dns сразу для всех образов оказалось просто. 
+Берем и прописываем в `/etc/docker/daemon.json
+
+```json
+{
+    "dns": ["a.b.c.d", "w.x.y.z"]
+}
+```
+
+## Немного итогов
+Целью было быстро создать среду для тестирования, которая вписалась бы git-flow.
+И вот что получилось:
+1. Цепочка `git push` -> deployed container
+1. Постоянно\* доступый для тестирования master:head
+1. Минималистичный image < 150mb
+1. Сеттинг полностью соответствующий окружению машины разработчика
+
 
 
 
