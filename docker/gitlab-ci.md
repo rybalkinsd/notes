@@ -121,7 +121,7 @@ CMD ["java", "-jar", "my-app.jar"]
   token = ***
   executor = "docker"
   [runners.docker]
-    image = "maven:3.5.0-jdk-8-onbuild"
+    image = "maven:3.5.0-jdk-8-apline"
     volumes = [
       "/cache", 
       "/.m2:/root/.m2", 
